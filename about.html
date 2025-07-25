@@ -16,6 +16,7 @@
         font-family: 'Segoe UI', sans-serif;
         background-color: #fefefe;
         color: #333;
+        overflow-x: hidden;
       }
 
       header.topbar {
@@ -45,6 +46,55 @@
         font-weight: bold;
       }
 
+      .menu-button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        height: 100%;
+        width: 250px;
+        background-color: #0a9396;
+        padding-top: 60px;
+        transition: right 0.3s ease-in-out;
+        z-index: 1002;
+        color: white;
+      }
+
+      .sidebar a {
+        display: block;
+        padding: 15px 25px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .sidebar a:hover {
+        background-color: #007f7f;
+      }
+
+      .sidebar.show {
+        right: 0;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: none;
+        border: none;
+        font-size: 22px;
+        color: white;
+        cursor: pointer;
+      }
+
       main.main-content {
         padding: 30px 20px;
         max-width: 1000px;
@@ -70,11 +120,6 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       }
 
-      .section video {
-        display: block;
-        max-width: 100%;
-      }
-
       .section p {
         margin-top: 12px;
         font-size: 1rem;
@@ -92,13 +137,27 @@
     </style>
   </head>
   <body>
+    <!-- Header -->
     <header class="topbar">
       <div class="left-header">
         <img src="https://kompaspedia.kompas.id/wp-content/uploads/2020/08/logo_Universitas-Muhammadiyah-Makassar.png" alt="Logo UNISMUH" class="logo" />
         <span class="judul">Saigon Bistro</span>
       </div>
+      <div class="right-header">
+        <button class="menu-button" onclick="toggleSidebar()">☰</button>
+      </div>
     </header>
 
+    <!-- Sidebar -->
+    <nav id="sidebar" class="sidebar">
+      <button class="close-btn" onclick="toggleSidebar()">✖</button>
+      <a href="index.html">Beranda</a>
+      <a href="dokumentasi.html">Dokumentasi</a>
+      <a href="kontak.html">Kontak</a>
+      <a href="about.html">Tentang</a>
+    </nav>
+
+    <!-- Main Content -->
     <main class="main-content">
       <h2>Tentang Saigon Bistro</h2>
 
@@ -113,11 +172,9 @@
       <div class="section">
         <img src=".vscode/assets/footage6.jpg" alt="Makanan yang Dipesan" />
         <p>
-          Makanan yang saya pesan benar-benar memberikan pengalaman kuliner yang memuaskan di Saigon Bistro. Menu pertama yang saya coba adalah Nasi Goreng Kampung, disajikan dengan cita rasa tradisional yang kuat, bumbu yang meresap
-          sempurna, serta tekstur nasi yang pulen dan tidak lembek. Selanjutnya, Ayam Goreng Colo-colo menjadi favorit karena rasa gurih ayamnya yang krispi dipadu dengan sambal colo-colo khas yang segar dan sedikit pedas, menciptakan
-          kombinasi rasa yang unik. Untuk minuman, saya menikmati Coklat Milkshake yang lembut dan kaya rasa cokelat, sangat cocok untuk menghilangkan dahaga di tengah suasana makan yang nyaman. Hazelnut Latte menjadi pelengkap yang pas,
-          dengan aroma hazelnut yang harum dan rasa kopi yang seimbang. Sebagai penutup, saya memesan Cheesecake yang lembut dan creamy, dengan rasa manis yang tidak berlebihan. Semua makanan tersaji dengan penampilan menarik dan cita rasa
-          yang membuat saya ingin kembali lagi.
+          Makanan yang saya pesan benar-benar memberikan pengalaman kuliner yang memuaskan. Pertama, Nasi Goreng Kampung disajikan dengan cita rasa tradisional yang kuat, bumbu yang meresap sempurna, serta tekstur nasi yang pulen. Lalu Ayam
+          Goreng Colo-colo menjadi favorit karena ayamnya krispi dan sambalnya segar. Untuk minuman, Coklat Milkshake lembut dan kaya rasa, Hazelnut Latte harum dan pas untuk pecinta kopi. Sebagai penutup, Cheesecake yang lembut dan manis
+          menjadi akhir yang sempurna dari santapan ini.
         </p>
       </div>
 
@@ -125,15 +182,15 @@
         <img src=".vscode/assets/footage2.jpg" alt="Pelayanan di Saigon Bistro" />
         <p>
           Pelayanan di Saigon Bistro sangat memuaskan. Para staf tidak hanya menyambut dengan senyum, tetapi juga cepat dalam merespons pesanan dan kebutuhan pelanggan. Mereka memberikan rekomendasi menu dengan sabar, dan memastikan
-          kenyamanan setiap tamu. Ini menunjukkan bahwa pelayanan adalah salah satu nilai utama yang dijaga di sini.
+          kenyamanan setiap tamu.
         </p>
       </div>
 
       <div class="section">
         <img src=".vscode/assets/footage3.jpg" alt="Suasana live music di Saigon Bistro" />
         <p>
-          Ketika malam tiba, suasana di Saigon Bistro berubah menjadi lebih hidup dengan hadirnya live music. Musik akustik dari musisi lokal mengiringi suasana makan malam yang hangat. Banyak pengunjung terlihat menikmati makanan sambil
-          berbincang dan menikmati alunan musik yang membuat suasana makin menyenangkan. Area outdoor menjadi favorit, terutama karena pencahayaan hangat dan dekorasi yang artistik.
+          Saat malam tiba, suasana di Saigon Bistro berubah menjadi lebih hidup dengan hadirnya live music dari musisi lokal. Musik akustik menemani santap malam pengunjung, menambah kenyamanan dan kehangatan suasana. Dekorasi outdoor yang
+          artistik juga mempercantik pengalaman bersantap.
         </p>
       </div>
     </main>
@@ -141,5 +198,12 @@
     <footer class="footer">
       <p>© 2025 M. Dzulfikar Hidayat</p>
     </footer>
+
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('show');
+      }
+    </script>
   </body>
 </html>
