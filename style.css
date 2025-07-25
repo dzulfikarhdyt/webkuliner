@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f4f4;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #006778;
+  color: white;
+  padding: 10px 20px;
+}
+
+.topbar .logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.judul {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+}
+
+.right-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.sidebar a {
+  margin: 10px 0;
+  text-decoration: none;
+  color: #006778;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: #e0f7f9;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.image-wrapper {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.front-image {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.caption {
+  font-style: italic;
+  color: #555;
+  margin-top: 8px;
+}
+
+.video-container {
+  margin: 20px 0;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.button-link {
+  display: inline-block;
+  background-color: #006778;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.button-link:hover {
+  background-color: #004f5a;
+}
+
+.footer {
+  background-color: #006778;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}

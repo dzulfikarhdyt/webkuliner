@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dokumentasi - Saigon Bistro</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #fdfdfd;
+        color: #333;
+      }
+
+      header.topbar {
+        background-color: #0a9396;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1001;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .left-header {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo {
+        height: 45px;
+        margin-right: 12px;
+      }
+
+      .judul {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      .right-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .menu-button {
+        font-size: 1.6rem;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+      }
+
+      .nama-user {
+        font-size: 1rem;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 999;
+        display: none;
+      }
+
+      .overlay.show {
+        display: block;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 260px;
+        height: 100%;
+        background-color: #005f73;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        padding: 70px 20px 20px;
+        z-index: 1000;
+        transition: right 0.3s ease-in-out;
+      }
+
+      .sidebar.active {
+        right: 0;
+      }
+
+      .sidebar a {
+        color: white;
+        text-decoration: none;
+        margin: 12px 0;
+        font-size: 1.1rem;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: background 0.2s ease;
+      }
+
+      .sidebar a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        background: none;
+        color: white;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+      }
+
+      main.main-content {
+        padding: 20px;
+      }
+
+      .content-wrapper {
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 20px 0;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .gallery img,
+      .gallery video {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      footer.footer {
+        text-align: center;
+        padding: 12px;
+        background-color: #e9ecef;
+        margin-top: 50px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+    </style>
+    <script>
+      function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('active');
+        document.querySelector('.overlay').classList.toggle('show');
+      }
+
+      function closeSidebar() {
+        document.querySelector('.sidebar').classList.remove('active');
+        document.querySelector('.overlay').classList.remove('show');
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <button class="close-btn" onclick="closeSidebar()">✖</button>
+      <a href="index.html">Beranda</a>
+      <a href="dokumentasi.html">Dokumentasi</a>
+      <a href="#">Kontak</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="topbar">
+      <div class="left-header">
+        <img src="https://kompaspedia.kompas.id/wp-content/uploads/2020/08/logo_Universitas-Muhammadiyah-Makassar.png" alt="Logo UNISMUH" class="logo" />
+        <span class="judul">Saigon Bistro</span>
+      </div>
+      <div class="right-header">
+        <span class="nama-user">M. Dzulfikar Hidayat</span>
+        <button class="menu-button" onclick="toggleSidebar()">☰</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        <h2>Dokumentasi Restoran</h2>
+        <p class="description">Berikut adalah beberapa dokumentasi visual suasana dan menu di Saigon Bistro yang diambil langsung menggunakan kamera HP.</p>
+
+        <div class="gallery">
+          <video src=".vscode/assets/vidmakan2.mp4" controls></video>
+          <video src=".vscode/assets/vidmakan.mp4" controls></video>
+          <video src=".vscode/assets/vidmakan3.mp4" controls></video>
+          <img src=".vscode/assets/footage.jpg" alt="Foto 1" />
+          <img src=".vscode/assets/footage3.jpg" alt="Foto 2" />
+          <img src=".vscode/assets/makan.jpg" alt="Foto 3" />
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2025 M. Dzulfikar Hidayat</p>
+    </footer>
+  </body>
+</html>
