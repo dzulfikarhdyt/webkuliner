@@ -3,20 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tentang - Saigon Bistro</title>
+    <title>About - Saigon Bistro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <style>
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        font-family: 'Segoe UI', sans-serif;
       }
 
       body {
-        font-family: 'Segoe UI', sans-serif;
-        background-color: #fefefe;
+        background: #fdfdfd;
         color: #333;
-        overflow-x: hidden;
       }
 
       header.topbar {
@@ -25,185 +27,188 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 20px;
+        padding: 12px 24px;
         position: sticky;
         top: 0;
-        z-index: 1001;
-      }
-
-      .left-header {
-        display: flex;
-        align-items: center;
+        z-index: 999;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       }
 
       .logo {
-        height: 45px;
-        margin-right: 12px;
+        height: 50px;
+        margin-right: 15px;
       }
 
       .judul {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: bold;
       }
 
       .menu-button {
+        font-size: 1.6rem;
         background: none;
         border: none;
-        font-size: 24px;
         color: white;
         cursor: pointer;
       }
 
-      /* Sidebar */
       .sidebar {
         position: fixed;
         top: 0;
-        right: -250px;
+        right: -270px;
+        width: 270px;
         height: 100%;
-        width: 250px;
-        background-color: #0a9396;
-        padding-top: 60px;
-        transition: right 0.3s ease-in-out;
-        z-index: 1002;
+        background-color: #005f73;
         color: white;
+        padding: 25px;
+        transition: right 0.4s ease-in-out;
+        z-index: 1000;
+      }
+
+      .sidebar.open {
+        right: 0;
       }
 
       .sidebar a {
         display: block;
-        padding: 15px 25px;
         color: white;
         text-decoration: none;
-        font-size: 18px;
+        margin: 20px 0;
+        font-size: 1.1rem;
       }
 
-      .sidebar a:hover {
-        background-color: #007f7f;
-      }
-
-      .sidebar.show {
-        right: 0;
-      }
-
-      .close-btn {
-        position: absolute;
-        top: 10px;
-        left: 10px;
+      .sidebar .close-btn {
         background: none;
         border: none;
-        font-size: 22px;
         color: white;
+        font-size: 1.2rem;
+        float: right;
         cursor: pointer;
       }
 
       main.main-content {
-        padding: 30px 20px;
-        max-width: 1000px;
+        padding: 40px 20px;
+        max-width: 1100px;
         margin: auto;
       }
 
       h2 {
-        margin-bottom: 20px;
         text-align: center;
-        font-size: 2rem;
+        font-size: 2.4rem;
         color: #0a9396;
+        margin-bottom: 30px;
       }
 
       .section {
-        margin-bottom: 40px;
+        margin-bottom: 50px;
+        animation: fadeIn 1s ease-in-out;
       }
 
       .section img,
       .section video {
         width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .section p {
-        margin-top: 12px;
+        margin-top: 14px;
         font-size: 1rem;
         line-height: 1.7;
+        color: #444;
+        padding: 0 5px;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 1.3rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       footer.footer {
         text-align: center;
-        padding: 12px;
+        padding: 16px;
         background-color: #e9ecef;
+        color: #666;
         font-size: 0.9rem;
         margin-top: 60px;
-        color: #555;
       }
     </style>
+    <script>
+      function toggleSidebar() {
+        document.querySelector('.sidebar').classList.toggle('open');
+      }
+      function closeSidebar() {
+        document.querySelector('.sidebar').classList.remove('open');
+      }
+    </script>
   </head>
   <body>
-    <!-- Header -->
     <header class="topbar">
-      <div class="left-header">
+      <div style="display: flex; align-items: center">
         <img src="https://kompaspedia.kompas.id/wp-content/uploads/2020/08/logo_Universitas-Muhammadiyah-Makassar.png" alt="Logo UNISMUH" class="logo" />
         <span class="judul">Saigon Bistro</span>
       </div>
-      <div class="right-header">
-        <button class="menu-button" onclick="toggleSidebar()">☰</button>
-      </div>
+      <button class="menu-button" onclick="toggleSidebar()">☰</button>
     </header>
 
-    <!-- Sidebar -->
-    <nav id="sidebar" class="sidebar">
-      <button class="close-btn" onclick="toggleSidebar()">✖</button>
+    <nav class="sidebar">
+      <button class="close-btn" onclick="closeSidebar()">✖</button>
       <a href="index.html">Beranda</a>
       <a href="dokumentasi.html">Dokumentasi</a>
       <a href="kontak.html">Kontak</a>
       <a href="about.html">Tentang</a>
     </nav>
 
-    <!-- Main Content -->
     <main class="main-content">
       <h2>Tentang Saigon Bistro</h2>
 
       <div class="section">
+        <h3>1. Suasana Saigon</h3>
         <video src=".vscode/assets/vidmakan2.mp4" controls></video>
         <p>
-          Saigon Bistro menyajikan suasana yang sangat nyaman dan bersih. Tata letak meja dan pencahayaan ruangan memberikan kesan modern namun tetap akrab. Musik latar yang lembut dan pelayanan yang ramah membuat setiap pengunjung merasa
-          betah untuk berlama-lama di sini, baik bersama keluarga maupun rekan kerja.
+          Saigon Bistro memberikan suasana yang estetik dan nyaman, cocok untuk santai bersama teman atau keluarga. Interior bernuansa tropikal modern, lengkap dengan pencahayaan hangat dan dekorasi bernuansa Vietnam membuat siapa pun
+          merasa betah. Kebersihan dan tata letak meja yang luas memberi nilai lebih bagi pengunjung.
         </p>
       </div>
 
       <div class="section">
+        <h3>2. Makanan yang Dipesan</h3>
         <img src=".vscode/assets/footage6.jpg" alt="Makanan yang Dipesan" />
         <p>
-          Makanan yang saya pesan benar-benar memberikan pengalaman kuliner yang memuaskan. Pertama, Nasi Goreng Kampung disajikan dengan cita rasa tradisional yang kuat, bumbu yang meresap sempurna, serta tekstur nasi yang pulen. Lalu Ayam
-          Goreng Colo-colo menjadi favorit karena ayamnya krispi dan sambalnya segar. Untuk minuman, Coklat Milkshake lembut dan kaya rasa, Hazelnut Latte harum dan pas untuk pecinta kopi. Sebagai penutup, Cheesecake yang lembut dan manis
-          menjadi akhir yang sempurna dari santapan ini.
+          Makanan yang saya pesan memberikan pengalaman rasa yang menyenangkan. Mulai dari <strong>Nasi Goreng Kampung</strong> dengan bumbu khas nusantara, <strong>Ayam Goreng Colo-colo</strong> yang pedas segar, hingga
+          <strong>Coklat Milkshake</strong> dan <strong>Hazelnut Latte</strong> yang menyegarkan dan beraroma. Tak lupa <strong>Cheesecake</strong> yang creamy sebagai dessert sempurna untuk menutup pengalaman makan.
         </p>
       </div>
 
       <div class="section">
-        <img src=".vscode/assets/footage2.jpg" alt="Pelayanan di Saigon Bistro" />
+        <h3>3. Pelayanan Saigon</h3>
+        <img src=".vscode/assets/footage2.jpg" alt="Pelayanan" />
         <p>
-          Pelayanan di Saigon Bistro sangat memuaskan. Para staf tidak hanya menyambut dengan senyum, tetapi juga cepat dalam merespons pesanan dan kebutuhan pelanggan. Mereka memberikan rekomendasi menu dengan sabar, dan memastikan
-          kenyamanan setiap tamu.
+          Pelayanan sangat cepat dan ramah. Staff di Saigon Bistro sangat membantu dan sopan dalam memberikan rekomendasi menu dan merespons kebutuhan pelanggan. Pengunjung dilayani dengan penuh perhatian sejak masuk hingga selesai makan.
         </p>
       </div>
 
       <div class="section">
-        <img src=".vscode/assets/footage3.jpg" alt="Suasana live music di Saigon Bistro" />
-        <p>
-          Saat malam tiba, suasana di Saigon Bistro berubah menjadi lebih hidup dengan hadirnya live music dari musisi lokal. Musik akustik menemani santap malam pengunjung, menambah kenyamanan dan kehangatan suasana. Dekorasi outdoor yang
-          artistik juga mempercantik pengalaman bersantap.
-        </p>
+        <h3>4. Live Music di Malam Hari</h3>
+        <img src=".vscode/assets/footage3.jpg" alt="Live Music" />
+        <p>Saat malam tiba, live music dari musisi lokal menghidupkan suasana Saigon Bistro. Lagu-lagu akustik yang dimainkan menciptakan ambience yang hangat dan romantis. Sangat cocok untuk pengunjung yang datang di malam akhir pekan.</p>
       </div>
     </main>
 
     <footer class="footer">
-      <p>© 2025 M. Dzulfikar Hidayat</p>
+      <p>© 2025 M. Dzulfikar Hidayat - Saigon Bistro Documentation</p>
     </footer>
-
-    <script>
-      function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        sidebar.classList.toggle('show');
-      }
-    </script>
   </body>
 </html>
